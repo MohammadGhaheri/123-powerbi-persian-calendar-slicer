@@ -1,0 +1,507 @@
+.pc-root {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    overflow: visible;
+}
+
+.pc-root * {
+    box-sizing: border-box;
+}
+
+.pc-card {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    padding: 10px 12px 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #111827;
+    overflow: visible;
+}
+
+.pc-header {
+    margin-bottom: 12px;
+}
+
+.pc-title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.pc-subtitle {
+    margin-top: 2px;
+    color: #6b7280;
+    font-size: 11px;
+}
+
+.pc-body {
+    position: relative;
+}
+
+.pc-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.pc-field span {
+    display: block;
+    margin-bottom: 4px;
+    color: #374151;
+    font-size: 11px;
+}
+
+.pc-input-wrap {
+    position: relative;
+}
+
+.pc-input {
+    width: 100%;
+    height: 34px;
+    padding: 6px 32px 6px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #fff;
+    color: #111827;
+    outline: none;
+    font-size: 12px;
+    text-align: center;
+    direction: ltr;
+}
+
+.pc-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.pc-calendar-button {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.pc-calendar-button:hover {
+    background: #f3f4f6;
+}
+
+.pc-actions,
+.pc-quick-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.pc-button,
+.pc-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.pc-button:hover,
+.pc-chip:hover {
+    background: #f3f4f6;
+}
+
+.pc-primary {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.pc-primary:hover {
+    background: #1d4ed8;
+}
+
+.pc-chip {
+    height: 26px;
+    border-radius: 999px;
+    font-size: 11px;
+}
+
+.pc-status {
+    margin-top: 10px;
+    min-height: 18px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+.pc-success { color: #047857; }
+.pc-warn { color: #b45309; }
+.pc-error { color: #b91c1c; }
+.pc-info { color: #6b7280; }
+
+.pc-datepicker {
+    position: absolute;
+    z-index: 99999;
+    width: 292px;
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 32px rgba(17, 24, 39, 0.18);
+    direction: rtl;
+}
+
+.pc-picker-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.pc-picker-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.pc-picker-nav {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #374151;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.pc-picker-nav:hover {
+    background: #f3f4f6;
+}
+
+.pc-weekdays,
+.pc-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.pc-weekdays span {
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.pc-day {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #374151;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.pc-day:hover {
+    background: #f3f4f6;
+}
+
+.pc-empty {
+    cursor: default;
+}
+
+.pc-today {
+    border: 1px solid #9ca3af;
+}
+
+.pc-selected {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.pc-selected:hover {
+    background: #1d4ed8;
+}
+
+.pc-picker-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.pc-picker-link {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.pc-between-track {
+    display: none;
+}
+
+.pc-mode-between .pc-card,
+.pc-mode-between {
+    border-radius: 2px;
+}
+
+.pc-mode-between .pc-header,
+.pc-mode-between .pc-actions,
+.pc-mode-between .pc-quick-actions,
+.pc-mode-between .pc-status {
+    display: none !important;
+}
+
+.pc-mode-between {
+    padding: 8px 10px;
+    border-color: transparent;
+}
+
+.pc-mode-between .pc-fields {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    direction: ltr;
+}
+
+.pc-mode-between .pc-field {
+    direction: ltr;
+}
+
+.pc-mode-between .pc-field span {
+    display: none;
+}
+
+.pc-mode-between .pc-input {
+    height: 34px;
+    border-radius: 0;
+    border-color: #e5e7eb;
+    box-shadow: none;
+    font-size: 13px;
+    text-align: left;
+    padding-right: 30px;
+}
+
+.pc-mode-between .pc-calendar-button {
+    right: 5px;
+}
+
+.pc-mode-between .pc-between-track {
+    display: block;
+    position: relative;
+    height: 54px;
+    margin: 8px 8px 0;
+}
+
+.pc-mode-between .pc-between-line {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 24px;
+    height: 5px;
+    border-radius: 999px;
+    background: #737373;
+}
+
+.pc-mode-between .pc-between-handle {
+    position: absolute;
+    top: 10px;
+    width: 34px;
+    height: 34px;
+    border: 3px solid #737373;
+    border-radius: 999px;
+    background: #ffffff;
+}
+
+.pc-mode-between .pc-between-handle-start {
+    left: 0;
+}
+
+.pc-mode-between .pc-between-handle-end {
+    right: 0;
+}
+
+.pc-mode-between .pc-datepicker {
+    direction: rtl;
+}
+
+/* v0.4 hardening: Power BI package needs stylesheet imported by visual.ts. */
+.pc-datepicker[hidden] {
+    display: none !important;
+}
+
+.pc-date-modal-backdrop {
+    display: none;
+}
+
+.pc-datepicker {
+    max-width: calc(100% - 16px);
+}
+
+@media (max-width: 340px) {
+    .pc-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .pc-datepicker {
+        width: calc(100% - 16px);
+        left: 8px !important;
+    }
+}
+
+
+/* v0.5: source roles, overlay modes, footer branding, and format-pane display modes. */
+.pc-footer {
+    margin-top: 6px;
+    color: #9ca3af;
+    font-size: 9px;
+    line-height: 1.2;
+    text-align: center;
+    direction: ltr;
+    user-select: none;
+}
+
+.pc-mode-overlay .pc-datepicker,
+.pc-mode-modal .pc-datepicker {
+    top: 4px;
+}
+
+.pc-mode-overlay .pc-datepicker,
+.pc-mode-modal .pc-datepicker,
+.pc-mode-between .pc-datepicker {
+    border-radius: 10px;
+}
+
+.pc-mode-modal .pc-datepicker::before {
+    content: "";
+    position: absolute;
+    inset: -999px;
+    z-index: -1;
+    background: rgba(17, 24, 39, 0.08);
+}
+
+.pc-mode-inline .pc-datepicker {
+    position: absolute;
+}
+
+.pc-mode-between .pc-footer,
+.pc-mode-between .pc-status {
+    display: none !important;
+}
+
+.pc-mode-between .pc-datepicker {
+    box-shadow: 0 12px 32px rgba(17, 24, 39, 0.22);
+}
+
+.pc-mode-between .pc-fields {
+    margin-top: 2px;
+}
+
+.pc-mode-between .pc-input {
+    direction: ltr;
+}
+
+.pc-mode-overlay .pc-datepicker[hidden],
+.pc-mode-inline .pc-datepicker[hidden],
+.pc-mode-modal .pc-datepicker[hidden],
+.pc-mode-between .pc-datepicker[hidden] {
+    display: none !important;
+}
+
+/* v0.6: configurable filter summary/status, Persian font selection, and author footer link. */
+.pc-footer {
+    cursor: pointer;
+    padding-top: 2px;
+}
+
+.pc-footer:hover .pc-footer-product,
+.pc-footer:hover .pc-footer-author {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.pc-footer:focus {
+    outline: 1px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.pc-footer-product {
+    font-size: 9px;
+    line-height: 1.25;
+}
+
+.pc-footer-author {
+    margin-top: 1px;
+    font-size: 8px;
+    line-height: 1.25;
+}
+
+/* v0.7: Calibri option, top overlay DatePicker, and open-source support notice. */
+.pc-datepicker {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.pc-mode-overlay .pc-datepicker,
+.pc-mode-modal .pc-datepicker,
+.pc-mode-between .pc-datepicker {
+    top: 8px !important;
+}
+
+.pc-donation-notice {
+    margin-top: 8px;
+    padding: 7px 8px;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    background: #fffbeb;
+    color: #92400e;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.pc-donation-notice:hover {
+    border-color: #f59e0b;
+    background: #fef3c7;
+    color: #78350f;
+    text-decoration: underline;
+}
+
+.pc-donation-notice:focus {
+    outline: 1px solid #f59e0b;
+    outline-offset: 2px;
+}

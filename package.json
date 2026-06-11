@@ -1,0 +1,31 @@
+{
+  "name": "123-persian-calendar-slicer",
+  "version": "0.7.0",
+  "description": "A Power BI custom slicer for selecting Jalali date ranges and filtering Gregorian dates or Persian yyyymmdd date keys.",
+  "scripts": {
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "lint": "echo \"No linter configured yet\""
+  },
+  "author": {
+    "name": "Mohammad Ghaheri",
+    "url": "https://www.linkedin.com/in/mohammadghaheri/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "powerbi-visuals-tools": "^7.1.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "powerbi-models": "^1.15.3",
+    "powerbi-visuals-api": "~5.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MohammadGhaheri/123-powerbi-persian-calendar-slicer.git"
+  },
+  "homepage": "https://github.com/MohammadGhaheri/123-powerbi-persian-calendar-slicer",
+  "bugs": {
+    "url": "https://github.com/MohammadGhaheri/123-powerbi-persian-calendar-slicer/issues"
+  }
+}

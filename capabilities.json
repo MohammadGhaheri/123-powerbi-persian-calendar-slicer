@@ -1,0 +1,160 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Gregorian Date",
+      "name": "date",
+      "kind": "Grouping",
+      "description": "Gregorian Date/DateTime column. The visual converts the selected Jalali range to Gregorian and filters this field."
+    },
+    {
+      "displayName": "Persian Date Key (yyyymmdd)",
+      "name": "jalaliDateKey",
+      "kind": "Grouping",
+      "description": "Optional Jalali date key field in yyyymmdd format, for example 14030101. Use this when your model stores dates only as Persian/Jalali keys."
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "categorical": {
+        "categories": {
+          "select": [
+            {
+              "for": {
+                "in": "date"
+              }
+            },
+            {
+              "for": {
+                "in": "jalaliDateKey"
+              }
+            }
+          ],
+          "dataReductionAlgorithm": {
+            "top": {
+              "count": 30000
+            }
+          }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "general": {
+      "displayName": "General",
+      "properties": {
+        "filter": {
+          "type": {
+            "filter": true
+          }
+        }
+      }
+    },
+    "calendar": {
+      "displayName": "Calendar",
+      "properties": {
+        "displayMode": {
+          "displayName": "Display mode",
+          "type": {
+            "enumeration": [
+              {
+                "displayName": "Inline below fields",
+                "value": "inline"
+              },
+              {
+                "displayName": "Overlay on fields",
+                "value": "overlay"
+              },
+              {
+                "displayName": "Between style",
+                "value": "between"
+              },
+              {
+                "displayName": "Power BI modal dialog - experimental",
+                "value": "modal"
+              }
+            ]
+          }
+        },
+        "usePersianDigits": {
+          "displayName": "Use Persian digits",
+          "type": {
+            "bool": true
+          }
+        },
+        "showHeader": {
+          "displayName": "Show internal header",
+          "type": {
+            "bool": true
+          }
+        },
+        "showQuickButtons": {
+          "displayName": "Show quick buttons",
+          "type": {
+            "bool": true
+          }
+        },
+        "autoApplyOnSelect": {
+          "displayName": "Auto apply after date select",
+          "type": {
+            "bool": true
+          }
+        },
+        "showBranding": {
+          "displayName": "Show module name footer",
+          "type": {
+            "bool": true
+          }
+        },
+        "showStatus": {
+          "displayName": "Show filter summary",
+          "type": {
+            "bool": true
+          }
+        },
+        "persianFontFamily": {
+          "displayName": "Persian font",
+          "type": {
+            "enumeration": [
+              {
+                "displayName": "Default",
+                "value": "default"
+              },
+              {
+                "displayName": "Segoe UI",
+                "value": "segoe"
+              },
+              {
+                "displayName": "Calibri",
+                "value": "calibri"
+              },
+              {
+                "displayName": "Tahoma",
+                "value": "tahoma"
+              },
+              {
+                "displayName": "Arial",
+                "value": "arial"
+              },
+              {
+                "displayName": "Vazirmatn",
+                "value": "vazirmatn"
+              },
+              {
+                "displayName": "IRANSans",
+                "value": "iransans"
+              },
+              {
+                "displayName": "Yekan Bakh",
+                "value": "yekan"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "supportsHighlight": false,
+  "suppressDefaultTitle": false,
+  "supportsSynchronizingFilterState": true,
+  "privileges": []
+}
