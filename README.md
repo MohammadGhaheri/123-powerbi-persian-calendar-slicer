@@ -17,7 +17,7 @@ This visual solves that gap by showing a Persian/Jalali date picker while applyi
 
 ## Current version
 
-**Version:** `0.7.0.0`
+**Version:** `0.8.0.0`
 
 ---
 
@@ -257,7 +257,7 @@ powerbi custom-visual persian-calendar jalali-calendar datepicker slicer busines
 Suggested release asset:
 
 ```text
-123PersianCalendarSlicer-0.7.0.0.pbiviz
+123PersianCalendarSlicer-0.8.0.0.pbiviz
 ```
 
 ---
