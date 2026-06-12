@@ -149,6 +149,13 @@
               }
             ]
           }
+        },
+        "donateInfo": {
+          "displayName": "⚠ Support open-source development",
+          "description": "If you hide the module footer, please consider supporting open-source development: https://csc1.ir/donate/",
+          "type": {
+            "text": true
+          }
         }
       }
     }

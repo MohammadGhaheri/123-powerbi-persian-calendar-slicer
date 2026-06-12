@@ -274,7 +274,7 @@ LinkedIn: <https://www.linkedin.com/in/mohammadghaheri/>
 ## Version history
 
 
-### v0.7.0.0
+### v0.8.0.0
 
 - Added **Calibri** to the Persian font selector.
 - Kept **Overlay on fields** as the default display mode.
@@ -328,3 +328,12 @@ LinkedIn: <https://www.linkedin.com/in/mohammadghaheri/>
 ## License
 
 MIT License. See `LICENSE`.
+
+
+## Version 0.8.0.0
+
+- Removed the in-visual donation warning when the module footer is hidden.
+- Added a support/donate note to the Calendar settings in the Format pane.
+- Improved DatePicker responsiveness for narrow visual widths.
+- Reduced horizontal overflow risk in the Jalali DatePicker.
+- Kept weekdays aligned with calendar days in compact layouts.

@@ -84,6 +84,7 @@ function fontFamilyCss(value: PersianFontFamily): string {
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/mohammadghaheri/";
 const DONATE_URL = "https://csc1.ir/donate/";
+const DONATE_NOTE = "⚠ If you hide the module footer, please consider supporting open-source development: https://csc1.ir/donate/";
 
 export class Visual implements IVisual {
     private host: IVisualHost;
@@ -103,7 +104,6 @@ export class Visual implements IVisual {
     private currentYearButton: HTMLButtonElement;
     private status: HTMLDivElement;
     private footer: HTMLDivElement;
-    private donationNotice: HTMLDivElement;
     private picker: HTMLDivElement;
     private dateSource: DateSource | null = null;
     private dataRange: { min: JalaliDate; max: JalaliDate } | null = null;
@@ -265,6 +265,7 @@ export class Visual implements IVisual {
                                 {
                                     uid: "calendarShowBranding",
                                     displayName: "Show module name footer",
+                                    description: "⚠ If you hide the module footer, please consider supporting open-source development: https://csc1.ir/donate/",
                                     control: {
                                         type: powerbi.visuals.FormattingComponent.ToggleSwitch,
                                         properties: {
@@ -272,6 +273,19 @@ export class Visual implements IVisual {
                                             value: this.showBranding
                                         }
                                     }
+                                },
+                                {
+                                    uid: "calendarDonateInfo",
+                                    displayName: "⚠ Support open-source development",
+                                    description: "If you hide the module footer, please consider supporting open-source development.",
+                                    control: {
+                                        type: powerbi.visuals.FormattingComponent.TextInput,
+                                        properties: {
+                                            descriptor: { objectName: "calendar", propertyName: "donateInfo" },
+                                            value: DONATE_NOTE,
+                                            placeholder: "https://csc1.ir/donate/"
+                                        } as any
+                                    } as any
                                 }
                             ]
                         }
@@ -335,9 +349,6 @@ export class Visual implements IVisual {
                     </div>
 
                     <div class="pc-status"></div>
-                    <div class="pc-donation-notice" role="link" tabindex="0" title="Support open-source 123 Power BI visuals">
-                        برای حذف نام ماژول و حمایت از توسعه ماژول‌های متن‌باز به csc1.ir/donate بروید.
-                    </div>
                     <div class="pc-footer" role="link" tabindex="0" title="Mohammad Ghaheri on LinkedIn">
                         <div class="pc-footer-product">123 Persian Calendar Slicer</div>
                         <div class="pc-footer-author">By Mohammad Ghaheri</div>
@@ -362,7 +373,6 @@ export class Visual implements IVisual {
         this.currentYearButton = this.root.querySelector("[data-action='current-year']") as HTMLButtonElement;
         this.status = this.root.querySelector(".pc-status") as HTMLDivElement;
         this.footer = this.root.querySelector(".pc-footer") as HTMLDivElement;
-        this.donationNotice = this.root.querySelector(".pc-donation-notice") as HTMLDivElement;
         this.picker = this.root.querySelector(".pc-datepicker") as HTMLDivElement;
 
         this.applyButton.addEventListener("click", () => this.applyRangeFilter());
@@ -416,16 +426,6 @@ export class Visual implements IVisual {
             }
         });
 
-        this.donationNotice.addEventListener("click", (event) => {
-            event.stopPropagation();
-            this.openDonatePage();
-        });
-        this.donationNotice.addEventListener("keydown", (event: KeyboardEvent) => {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                this.openDonatePage();
-            }
-        });
     }
 
     private readSettings(dataView?: DataView): void {
@@ -462,7 +462,6 @@ export class Visual implements IVisual {
         this.currentMonthButton.style.display = this.showQuickButtons ? "inline-flex" : "none";
         this.currentYearButton.style.display = this.showQuickButtons ? "inline-flex" : "none";
         this.footer.style.display = this.showBranding ? "block" : "none";
-        this.donationNotice.style.display = this.showBranding ? "none" : "block";
         this.status.style.display = this.showStatus ? "block" : "none";
         this.root.style.fontFamily = fontFamilyCss(this.persianFontFamily);
         ["pc-mode-inline", "pc-mode-overlay", "pc-mode-between", "pc-mode-modal"].forEach((cls) => this.card.classList.remove(cls));
@@ -536,24 +535,28 @@ export class Visual implements IVisual {
     private positionPicker(input: HTMLInputElement): void {
         const cardRect = this.card.getBoundingClientRect();
         const inputRect = input.getBoundingClientRect();
-        const pickerWidth = Math.min(292, Math.max(240, cardRect.width - 16));
-        const maxHeight = Math.max(180, Math.floor(cardRect.height - 16));
+        const horizontalPadding = cardRect.width < 260 ? 8 : 16;
+        const pickerWidth = Math.min(292, Math.max(204, Math.floor(cardRect.width - horizontalPadding)));
+        const maxHeight = Math.max(160, Math.floor(cardRect.height - 12));
         this.picker.style.width = `${pickerWidth}px`;
         this.picker.style.maxHeight = `${maxHeight}px`;
         this.picker.style.overflowY = "auto";
+        this.picker.style.overflowX = "hidden";
+        this.picker.classList.toggle("pc-picker-compact", pickerWidth < 272);
+        this.picker.classList.toggle("pc-picker-tiny", pickerWidth < 232);
 
         if (this.displayMode === "inline") {
-            const left = Math.max(8, Math.min(cardRect.width - pickerWidth - 8, inputRect.right - cardRect.left - pickerWidth));
+            const left = Math.max(4, Math.min(cardRect.width - pickerWidth - 4, inputRect.right - cardRect.left - pickerWidth));
             const top = inputRect.bottom - cardRect.top + 8;
             this.picker.style.left = `${left}px`;
             this.picker.style.top = `${top}px`;
             return;
         }
 
-        // Overlay, modal fallback, and between mode: always open from the top of the visual.
-        // This avoids needing blank space below the slicer and works better in Power BI Report Server.
-        const left = Math.max(8, Math.round((cardRect.width - pickerWidth) / 2));
-        const top = 8;
+        // Overlay, modal fallback, and between mode: open inside the visual canvas.
+        // Power BI/Report Server clips custom visuals, so the popup must remain inside the visual frame.
+        const left = Math.max(4, Math.round((cardRect.width - pickerWidth) / 2));
+        const top = 6;
         this.picker.style.left = `${left}px`;
         this.picker.style.top = `${top}px`;
     }

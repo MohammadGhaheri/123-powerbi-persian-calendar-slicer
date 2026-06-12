@@ -4,8 +4,8 @@
     "displayName": "123 Persian Calendar Slicer",
     "guid": "OneTwoThreePersianCalendarSlicerA1B2C3D4E5F6",
     "visualClassName": "Visual",
-    "version": "0.7.0.0",
-    "description": "Persian/Jalali date range slicer for Power BI. Supports Gregorian Date columns and Persian date keys in yyyymmdd format, with configurable display modes, fonts, footer branding, donation notice, and filter summary.",
+    "version": "0.8.0.0",
+    "description": "Persian/Jalali date range slicer for Power BI. Supports Gregorian Date columns and Persian date keys in yyyymmdd format, with configurable display modes, fonts, footer branding, format-pane donation note, responsive compact date picker, and filter summary.",
     "supportUrl": "https://www.linkedin.com/in/mohammadghaheri/",
     "gitHubUrl": "https://github.com/MohammadGhaheri"
   },

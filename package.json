@@ -1,6 +1,6 @@
 {
   "name": "123-persian-calendar-slicer",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A Power BI custom slicer for selecting Jalali date ranges and filtering Gregorian dates or Persian yyyymmdd date keys.",
   "scripts": {
     "start": "pbiviz start",
